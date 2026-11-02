@@ -37,3 +37,10 @@ Codex를 활용한 웹 서비스 개발을 단계적으로 진행하기 위한 S
 ## 자동화의 한계
 
 Markdown 지침만으로 모든 행동을 기술적으로 강제할 수는 없습니다. 중요한 승인 게이트나 금지 작업은 필요에 따라 검증 스크립트, CI 검사로 보강해야 합니다.
+
+## Codex CLI 빠른 시작
+
+- 새 프로젝트: `git clone https://github.com/Kwon812/ai-web-development-harness.git my-web-app && cd my-web-app && codex`
+- 기존 프로젝트: `bash ai-web-development-harness/scripts/install.sh /absolute/path/to/project`
+- 상세 사용법: [Codex CLI 안내](docs/CODEX-QUICKSTART.md)
+- 설치 스크립트는 기존 AGENTS.md 및 규칙 파일을 덮어쓰지 않고 충돌 시 중단합니다.
