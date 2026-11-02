@@ -1,30 +1,28 @@
-# Codex 프로젝트 지침
+# Codex AI 활용평가 지침
 
-이 저장소는 Codex를 위한 웹 개발 Skills + Harness이다.
+## 시작
+- 사용자가 문제, 데이터, 요구사항을 제공하면 별도 초기화 문서 작성 없이 즉시 분석한다.
+- 먼저 자료를 확인하고 problem-analysis, data-analysis, stakeholder-communication Skill을 필요에 따라 적용한다.
+- 자료에서 확인 가능한 사실과 미확정 사항을 구분해 담당자 질문 목록을 제시한다.
+- 담당자 답변이 오면 질문 ID와 연결하여 요구사항, 설계, 구현 계획 및 테스트 기준에 반영한다.
+- 기술 스택은 요구사항과 사용자 선호를 고려해 제안하고 사용자 승인 후 확정한다.
+- `.harness/` 규칙을 준수한다. 필요 시 `.agents/skills/<name>/SKILL.md`를 읽는다.
 
-## 시작 시 필수
-1. `docs/PROJECT-STATE.md`와 `docs/DECISION-LOG.md`를 읽고 현재 상태 및 승인 여부를 확인한다.
-2. `.harness/`의 workflow, context, architecture, data, quality, security, approval 문서를 확인한다.
-3. 요청에 적합한 `.agents/skills/<skill-name>/SKILL.md`를 읽고 해당 절차를 따른다. 요청에 따라 여러 Skill을 조합한다.
-4. 기술 스택은 사용자의 선호와 요구사항을 고려해 비교 제안하되 승인 없이 확정하지 않는다.
-
-## 기능별 승인 게이트
-- Phase와 기능 단위로 계획하고 한 번에 하나의 기능만 구현한다.
-- 기능 구현 후 가능한 테스트, 타입 검사, 린트, 빌드를 실행하고 실제 결과를 기록한다.
-- `docs/REPORT-TEMPLATE.md`에 따라 구현 범위, 구현 방식, 구현 근거, 변경 파일, 테스트 결과, 특이사항, 사용자 확인 사항, 다음 작업, 승인 상태를 보고한다.
-- 사용자의 명시적 승인 전에는 다음 기능 또는 Phase로 진행하지 않는다. 침묵은 승인이 아니다.
-- Phase 종료 시 종합 보고 후 별도 승인을 받는다.
-- 승인 상태는 PENDING, APPROVED, CHANGES_REQUESTED, BLOCKED를 사용한다.
-- 수정 요청은 수정, 재검증, 재보고 후 승인받는다.
+## 기능 단위 작업
+- Phase 및 기능 계획을 세우고 사용자 승인 후 한 기능씩 구현한다.
+- 기능별 구현 → 실제 테스트 → 구현 보고 → 명시적 사용자 승인 → 다음 기능 순서로 진행한다.
+- 보고서에는 작업 개요, 구현 범위, 구현 방식, 구현 근거, 변경 파일, 테스트 결과(PASS/FAIL/NOT RUN), 특이사항, 사용자 확인 사항, 다음 작업, 승인 상태를 포함한다.
+- Phase 종료 시 종합 보고와 별도 승인을 받는다.
+- 승인 상태: PENDING, APPROVED, CHANGES_REQUESTED, BLOCKED.
+- 승인 없이 다음 기능을 진행하지 않는다. 수정 요청을 받으면 수정·재검증·재보고한다.
 
 ## 안전과 정확성
-- 요구사항이 모호하면 담당자에게 확인할 질문을 정리한다.
-- 테스트 미실행이나 실패를 성공으로 표시하지 않는다.
+- 담당자 답변은 사용자 구현 승인과 구별한다.
+- 근거 없는 가정을 확정 사실로 쓰지 않는다. 테스트를 실행하지 않았으면 미실행이라고 기록한다.
 - 운영 데이터 변경, 파괴적 명령, 비밀정보 공개, 비용 발생 작업은 사전 승인을 받는다.
-- `.env`와 토큰을 커밋하지 않는다.
-- 결정 및 진행 상황을 docs에 반영한다.
+- .env 및 토큰을 커밋하지 않는다.
+- 평가 시작 전 불필요한 문서 생성이나 초기 설정을 요구하지 않는다.
+- 필요 시 결정 사항을 작업 결과에 간결히 기록한다. 별도의 상태/결정 문서 생성은 기본 요구사항이 아니다.
 
-## Skill 목록
+## Skills
 problem-analysis, data-analysis, stakeholder-communication, service-planning, technology-selection, ui-ux-design, frontend-development, backend-development, testing-qa, technical-documentation.
-
-Markdown 지침만으로 승인 게이트가 기술적으로 완전히 강제되지는 않는다. 필요하면 별도의 검증 스크립트/CI를 추가한다.
