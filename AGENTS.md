@@ -1,13 +1,30 @@
-# 공통 에이전트 지침
+# Codex 프로젝트 지침
 
-- 먼저 현재 저장소 구조와 기존 규칙을 확인한다.
-- 사용자의 요청 범위를 벗어난 리팩터링을 하지 않는다.
-- 기존 구현 패턴과 명명 규칙을 존중한다.
-- 요구사항이 불명확하거나 서로 충돌하면 추측하지 말고 질문한다.
-- 변경 전 영향 범위와 접근 방식을 간단히 설명한다.
-- 구현 후 관련 테스트, 린트, 타입 검사, 빌드를 가능한 범위에서 실행한다.
-- 실행하지 못한 검사는 사유와 함께 미실행으로 기록한다.
-- 테스트 실패를 숨기거나 통과로 표시하지 않는다.
-- 기능 단위 작업이 끝나면 구현 보고서를 작성하고 승인을 기다린다.
-- 사용자 승인 전 다음 기능으로 넘어가지 않는다.
-- 비밀정보, 개인정보, 운영 데이터와 파괴적 작업을 보호한다.
+이 저장소는 Codex를 위한 웹 개발 Skills + Harness이다.
+
+## 시작 시 필수
+1. `docs/PROJECT-STATE.md`와 `docs/DECISION-LOG.md`를 읽고 현재 상태 및 승인 여부를 확인한다.
+2. `.harness/`의 workflow, context, architecture, data, quality, security, approval 문서를 확인한다.
+3. 요청에 적합한 `.agents/skills/<skill-name>/SKILL.md`를 읽고 해당 절차를 따른다. 요청에 따라 여러 Skill을 조합한다.
+4. 기술 스택은 사용자의 선호와 요구사항을 고려해 비교 제안하되 승인 없이 확정하지 않는다.
+
+## 기능별 승인 게이트
+- Phase와 기능 단위로 계획하고 한 번에 하나의 기능만 구현한다.
+- 기능 구현 후 가능한 테스트, 타입 검사, 린트, 빌드를 실행하고 실제 결과를 기록한다.
+- `docs/REPORT-TEMPLATE.md`에 따라 구현 범위, 구현 방식, 구현 근거, 변경 파일, 테스트 결과, 특이사항, 사용자 확인 사항, 다음 작업, 승인 상태를 보고한다.
+- 사용자의 명시적 승인 전에는 다음 기능 또는 Phase로 진행하지 않는다. 침묵은 승인이 아니다.
+- Phase 종료 시 종합 보고 후 별도 승인을 받는다.
+- 승인 상태는 PENDING, APPROVED, CHANGES_REQUESTED, BLOCKED를 사용한다.
+- 수정 요청은 수정, 재검증, 재보고 후 승인받는다.
+
+## 안전과 정확성
+- 요구사항이 모호하면 담당자에게 확인할 질문을 정리한다.
+- 테스트 미실행이나 실패를 성공으로 표시하지 않는다.
+- 운영 데이터 변경, 파괴적 명령, 비밀정보 공개, 비용 발생 작업은 사전 승인을 받는다.
+- `.env`와 토큰을 커밋하지 않는다.
+- 결정 및 진행 상황을 docs에 반영한다.
+
+## Skill 목록
+problem-analysis, data-analysis, stakeholder-communication, service-planning, technology-selection, ui-ux-design, frontend-development, backend-development, testing-qa, technical-documentation.
+
+Markdown 지침만으로 승인 게이트가 기술적으로 완전히 강제되지는 않는다. 필요하면 별도의 검증 스크립트/CI를 추가한다.
