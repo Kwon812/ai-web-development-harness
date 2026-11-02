@@ -1,46 +1,32 @@
-# AI Web Development Harness
+# AI Web Development Harness — Codex CLI
 
-Codex를 활용한 웹 서비스 개발을 단계적으로 진행하기 위한 Skills + Harness 구성입니다.
+AI 활용평가에서 주어진 **문제·데이터·요구사항을 분석하고 웹 서비스를 구현**하기 위한 Codex Skills + Harness.
 
-## 핵심 원칙
+## 바로 시작
+```bash
+git clone https://github.com/Kwon812/ai-web-development-harness.git
+cd ai-web-development-harness
+codex
+```
 
-- 요구사항 분석부터 기획, 설계, 구현, 테스트, 문서화까지 작업 단계를 분리합니다.
-- 프로젝트를 Phase와 기능 단위로 나누고, 한 번에 하나의 기능을 구현합니다.
-- 각 기능은 구현 후 테스트와 구현 보고서를 작성하고 사용자 승인을 기다립니다.
-- 사용자가 명시적으로 승인하기 전에는 다음 기능 또는 Phase로 넘어가지 않습니다.
-- 기술 스택과 아키텍처는 요구사항을 바탕으로 비교한 뒤 사용자 승인을 받아 확정합니다.
-- 테스트 결과와 미해결 사항을 사실대로 기록합니다.
+문제와 데이터, 요구사항을 제공하면 Codex가 즉시 분석을 시작하도록 `AGENTS.md`에 규칙을 정의했다. 별도 docs 초기화는 필요 없다.
 
-## 구성
+## 기존 프로젝트에 적용
+```bash
+git clone https://github.com/Kwon812/ai-web-development-harness.git
+bash ai-web-development-harness/scripts/install.sh /path/to/project
+```
+기존 파일이 충돌하면 덮어쓰지 않고 중단한다.
 
-- `.agents/skills/`: 상황에 따라 선택해 사용하는 작업별 Skill
-- `.harness/`: 작업 흐름, 품질, 보안, 승인 등을 통제하는 규칙
-- `docs/`: 프로젝트 진행 상태와 의사결정, 보고서 템플릿
+## 구조
+- `AGENTS.md`: Codex 실행 지침
+- `.agents/skills/`: 분석, 담당자 질문·답변 반영, 설계, 구현, 테스트, 보고 Skill 10개
+- `.harness/`: 작업 흐름, 품질, 보안, 승인 규칙
+- `scripts/install.sh`: 기존 프로젝트에 적용하는 선택적 스크립트
 
-## 시작 방법
+## 핵심 흐름
+문제·데이터·요구사항 분석 → 담당자 확인 질문 → 답변 반영 → 기술·계획 승인 → 기능별 구현·테스트·보고·승인 → 다음 기능.
 
-1. 저장소를 프로젝트 루트에 복사하거나 필요한 파일을 가져옵니다.
-2. `AGENTS.md`를 확인합니다.
-3. `docs/PROJECT-STATE.md`에 프로젝트 목적과 현재 상태를 기록합니다.
-4. 요구사항 분석부터 시작하고, 기술 스택은 승인 후 확정합니다.
-5. 기능별 구현·검증·보고·승인 절차를 반복합니다.
+구현 보고서에는 구현 내용, 구현 방식과 근거, 변경 파일, 테스트 결과, 특이사항, 사용자 확인 사항, 다음 작업, 승인 상태를 포함한다.
 
-## 작업 승인 상태
-
-- `PENDING`: 승인 대기
-- `APPROVED`: 승인됨
-- `CHANGES_REQUESTED`: 수정 요청
-- `BLOCKED`: 진행 차단
-
-승인은 AI가 추정하거나 대신할 수 없습니다. 사용자의 명시적인 응답만 승인으로 처리합니다.
-
-## 자동화의 한계
-
-Markdown 지침만으로 모든 행동을 기술적으로 강제할 수는 없습니다. 중요한 승인 게이트나 금지 작업은 필요에 따라 검증 스크립트, CI 검사로 보강해야 합니다.
-
-## Codex CLI 빠른 시작
-
-- 새 프로젝트: `git clone https://github.com/Kwon812/ai-web-development-harness.git my-web-app && cd my-web-app && codex`
-- 기존 프로젝트: `bash ai-web-development-harness/scripts/install.sh /absolute/path/to/project`
-- 상세 사용법: [Codex CLI 안내](docs/CODEX-QUICKSTART.md)
-- 설치 스크립트는 기존 AGENTS.md 및 규칙 파일을 덮어쓰지 않고 충돌 시 중단합니다.
+Markdown 지침만으로 승인 절차를 기술적으로 완벽하게 강제할 수는 없다.
